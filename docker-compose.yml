@@ -1,0 +1,30 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    networks:
+      - mymichappnetwork
+    ports:
+      - "27017:27017"
+    restart: always
+    volumes:
+      - mongodb_data:/data/db
+
+  michapp:
+    build: .
+    container_name: michapp
+    networks:
+      - mymichappnetwork
+    depends_on:
+      - mongodb
+    ports:
+      - "8501:8501"
+    environment:
+      MONGO_URI: "mongodb://mongodb:27017"
+    restart: always
+
+networks:
+  mymichappnetwork:
+
+volumes:
+  mongodb_data:
