@@ -82,17 +82,6 @@ if pill_selection is not None and pill_selection != st.session_state.pill_select
     st.session_state.pill_selection = pill_selection
     update_sections(pill_selection)
 
-# Display the current number of sections for debugging
-st.text(f"Current sections: {st.session_state.num_sections}")
-
-# Adjust the number of sections based on the selection
-#if mas == 1 and st.session_state.num_sections < 4:
- #   st.session_state.num_sections += 1
-  #  st.success(st.session_state.num_sections)
-#elif mas == 0 and st.session_state.num_sections > 0:
- #   st.session_state.num_sections -= 1
-  #  st.success(st.session_state.num_sections)
-
 # Display the input fields for each section
 monto = []
 descripcion = {}
@@ -141,8 +130,5 @@ elif finalizar and st.session_state.num_sections > 0:
             
         collection.insert_one(data)
         st.success('Data inserted successfully!')
-        st.success('With more than 1 register.')
-        print(f"num sections: {st.session_state.num_sections}")
-        st.success(data)
     else: 
         st.error("Please be sure to enter information in all the necessary fields")
