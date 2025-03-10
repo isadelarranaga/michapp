@@ -51,7 +51,6 @@ try:
         search_name = st.text_input("Ingresa el nombre a buscar")
 
         if search_name:
-            # Find documents matching the name
             filtered_docs = list(collection.find({"name": search_name}))
             
             if filtered_docs:
@@ -62,7 +61,7 @@ try:
                         st.write(f"**Descripción:** {doc.get('descripcion', 'N/A')}")
                     
                     # Check and display additional compras only if they exist
-                    for i in range(1, 5):  # Check for compras 1 through 4
+                    for i in range(1, 5): 
                         monto_key = f'monto_{i}'
                         desc_key = f'descripcion_{i}'
                         
